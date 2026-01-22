@@ -60,8 +60,8 @@
 
 	<!-- Flyway for Database Migrations -->
 	<dependency>
-		<groupId>org.flywaydb</groupId>
-		<artifactId>flyway-core</artifactId>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-flyway</artifactId>
 	</dependency>
 	<dependency>
 		<groupId>org.flywaydb</groupId>
@@ -94,12 +94,7 @@
 		<version>3.0.1</version>
 	</dependency>
 
-	<!-- Hypersistence Utils for PostgreSQL JSONB and Array support -->
-	<dependency>
-		<groupId>io.hypersistence</groupId>
-		<artifactId>hypersistence-utils-hibernate-63</artifactId>
-		<version>3.7.2</version>
-	</dependency>
+
 
 	<dependency>
 		<groupId>org.projectlombok</groupId>
