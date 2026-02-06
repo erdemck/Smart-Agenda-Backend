@@ -3,6 +3,7 @@ package com.eck.Smart.Agenda.service;
 import com.eck.Smart.Agenda.dto.auth.AuthResponse;
 import com.eck.Smart.Agenda.dto.auth.LoginRequest;
 import com.eck.Smart.Agenda.dto.auth.RegisterRequest;
+import com.eck.Smart.Agenda.dto.auth.UserResponse;
 import com.eck.Smart.Agenda.entity.User;
 import com.eck.Smart.Agenda.repository.UserRepository;
 import com.eck.Smart.Agenda.security.JwtService;
@@ -67,6 +68,16 @@ public class AuthService {
                                 .userId(user.getId())
                                 .email(user.getEmail())
                                 .fullName(user.getFullName())
+                                .build();
+        }
+
+        public UserResponse getUserResponse(User user) {
+                return UserResponse.builder()
+                                .id(user.getId())
+                                .email(user.getEmail())
+                                .fullName(user.getFullName())
+                                .role(user.getRole())
+                                .createdAt(user.getCreatedAt())
                                 .build();
         }
 }

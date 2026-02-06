@@ -3,11 +3,14 @@ package com.eck.Smart.Agenda.controller;
 import com.eck.Smart.Agenda.dto.auth.AuthResponse;
 import com.eck.Smart.Agenda.dto.auth.LoginRequest;
 import com.eck.Smart.Agenda.dto.auth.RegisterRequest;
+import com.eck.Smart.Agenda.dto.auth.UserResponse;
+import com.eck.Smart.Agenda.entity.User;
 import com.eck.Smart.Agenda.service.AuthService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -27,5 +30,10 @@ public class AuthController {
     public ResponseEntity<AuthResponse> login(@Valid @RequestBody LoginRequest request) {
         AuthResponse response = authService.login(request);
         return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/me")
+    public ResponseEntity<UserResponse> getMe(@AuthenticationPrincipal User user) {
+        return ResponseEntity.ok(authService.getUserResponse(user));
     }
 }
